@@ -1,0 +1,45 @@
+package org.example.test_and_example;
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+
+public class HelloApplication extends Application {
+
+    @Override
+    public void start(Stage stage) throws IOException {
+        //FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+
+
+        friendList list = new friendList();
+        test doso = new test();
+        VBox layout = new VBox();
+        TextField order = new TextField();
+        layout.getChildren().add(new Label("Welcome to friendList!"));
+        layout.getChildren().add(order);
+        Button button = new Button("first: submit");
+        Button button2 = new Button("second: operate on friendlist!");
+        layout.getChildren().add(button);
+        layout.getChildren().add(button2);
+
+        button.setOnAction(e-> list.setStr(order.getText()));
+        button2.setOnAction(e-> list.listen());
+
+
+        Scene scene = new Scene(layout);
+        stage.setTitle("Hello!");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static void main(String[] args) {
+        launch();
+    }
+}
